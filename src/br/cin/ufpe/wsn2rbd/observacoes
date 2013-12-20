@@ -1,0 +1,4 @@
+Observações:
+- um Block não pode ter o mesmo nome de outro Block. Só um é considerado;
+- não pode haver dois BlockChain (ex. Series, Parallel and Brigde) com o mesmo nome. Só um é considerado;
+- 

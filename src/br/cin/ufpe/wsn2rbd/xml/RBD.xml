@@ -1,0 +1,37 @@
+<rbd>                                       <!-- RBDModel.class -->
+    <name>NOME DO MODELO</name>
+    
+    <label_list>
+        <label name="" value="" />          <!-- RBDLabel.class -->
+        <label name="" value="" />
+        <label name="" value="" />
+        <label name="" value="" />
+        <!-- ... -->
+    </label_list>
+    
+    <block>                             <!-- BlockExponential.class -->
+        <name></name>
+        <type></type>                   <!-- Time  or Rate   -->
+        <status></status>               <!-- default or failed or working -->
+        <availability></availability>   <!-- value or label -->
+        <mttf></mttf>                   <!-- value or label -->
+        <mttr></mttr>                   <!-- value or label -->
+        <cost></cost>                   <!-- value or label -->
+    </block>
+
+    <series>                            <!-- BlockSeries.class -->
+        <name>NOME</name>
+        <!-- block, series, parallel and bridge -->
+    </series>
+
+    <parallel>                          <!-- BlockParallel.class -->
+        <name>NOME</name>
+        <!-- block, series, parallel and bridge -->
+    </parallel>
+
+    <bridge>                            <!-- BlockBridge.class -->
+        <name>NOME</name>
+        <!-- block, series, parallel and bridge -->
+    </bridge>
+        
+</rbd>
