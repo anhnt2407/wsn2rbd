@@ -40,7 +40,10 @@ public class Wsn2Rbd
                 ? true 
                 : route.isEmpty() )
         {
-            return new RBDModel( "WSN" );
+            RBDModel RBD = new RBDModel( "WSN" );
+            RBD.setModel( null );
+            
+            return RBD;
         }
         else
         {

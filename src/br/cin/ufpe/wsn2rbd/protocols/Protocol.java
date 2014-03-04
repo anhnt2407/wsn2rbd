@@ -141,35 +141,50 @@ public abstract class Protocol
         
         if( n.getProperties().containsKey( "battery_level" ) )
         {
+            String str = n.getProperties().get( "battery_level" );
+            double battery = 100.00;
+                
             try
             {
-                String str = n.getProperties().get( "battery_level" );
-                double battery = Double.parseDouble( str );
-                
-                //caso o valor da bateria seja maior do que o maximo, a confiança é 1.0
-                if( battery >= batteryMax )
-                {
-                    batteryLevel = 1.0;
-                }
-                //caso o valor da bateria seja menor do que o minimo, a confiança é 0.0
-                else if( battery <= batteryMin )
-                {
-                    batteryLevel = 0.0;
-                }
-                //caso o valor da bateria esteja entre o maximo e o minimo,
-                //a confiança deve ser proporcional
-                else
-                {
-                    double value    = battery    - batteryMin;
-                    double interval = batteryMax - batteryMin;
-                    
-                    batteryLevel = value / interval;
-                }
+                battery = Double.parseDouble( str );
             }
             catch( Exception err )
             {
+                battery = 100.00;
+                System.err.println( "[ERROR] " + err.getMessage() );
+            }
+                
+            //caso o valor da bateria seja maior do que o maximo, a confiança é 1.0
+            if( battery >= batteryMax )
+            {
                 batteryLevel = 1.0;
             }
+            //caso o valor da bateria seja menor do que o minimo, a confiança é 0.0
+            else if( battery <= batteryMin )
+            {
+                batteryLevel = 0.0;
+            }
+            //caso o valor da bateria esteja entre o maximo e o minimo,
+            //a confiança deve ser proporcional
+            else
+            {
+                try
+                {
+                    double value    = battery    - batteryMin;
+                    double interval = batteryMax - batteryMin;
+
+                    batteryLevel = value / interval;
+                }
+                catch( Exception err )
+                {
+                    batteryLevel = 1.0;
+                    System.err.println( "[ERROR] Interval is zero." );
+                }
+            }
+        }
+        else
+        {
+            System.err.println( "[ERROR] Node without battery level." );
         }
         
         return link * application * hardware * tinyos * batteryLevel;

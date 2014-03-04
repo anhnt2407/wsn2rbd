@@ -30,6 +30,11 @@ public class LeachProtocol extends Protocol
         try
         {
             chId = Integer.parseInt( chIdStr );
+            
+            if( chId <= 0 )     //TODO: quais sao as condicoes para ele nao tem um CH?
+            {
+                chId = 1;
+            }
         }
         catch( Exception err )
         {
@@ -51,10 +56,6 @@ public class LeachProtocol extends Protocol
             {
                 return null;
             }
-        }
-        else if( chId == 0 )
-        {
-            return null;
         }
         else
         {
