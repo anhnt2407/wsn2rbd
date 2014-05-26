@@ -72,11 +72,11 @@ public abstract class Protocol
             return false;
         }
         
-        int x1 = Integer.parseInt( n1.getProperties().get( "pos.x" ) );
-        int y1 = Integer.parseInt( n1.getProperties().get( "pos.y" ) );
+        int x1 = Integer.parseInt( n1.getProperties().get( "X" ) ); //pos.x
+        int y1 = Integer.parseInt( n1.getProperties().get( "Y" ) ); //pos.y
     
-        int x2 = Integer.parseInt( n2.getProperties().get( "pos.x" ) );
-        int y2 = Integer.parseInt( n2.getProperties().get( "pos.y" ) );
+        int x2 = Integer.parseInt( n2.getProperties().get( "X" ) );
+        int y2 = Integer.parseInt( n2.getProperties().get( "Y" ) );
         
         double distance = Math.sqrt( Math.pow( x1 - x2 , 2 ) + Math.pow( y1 - y2 , 2 ) );
         double range = Double.parseDouble( n1.getProperties().get( "range" ) );
